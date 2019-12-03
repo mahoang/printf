@@ -6,7 +6,7 @@
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 16:50:28 by mahoang           #+#    #+#             */
-/*   Updated: 2019/12/03 14:45:57 by mahoang          ###   ########.fr       */
+/*   Updated: 2019/12/03 18:29:40 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ void	ft_flag(const char *s, int *i, struct s_flags *flags, va_list lst_arg)
 	}
 }
 
-/* a modifier pour tout sauf c s d et u*/
-
 int		ft_access(const char *s, int *i, va_list lst_arg)
 {
 	struct s_flags	flags;
@@ -46,13 +44,19 @@ int		ft_access(const char *s, int *i, va_list lst_arg)
 	(*i)++;
 	ft_flag(s, i, &flags, lst_arg);
 	if (s[*i] == 'c')
-		ret = ft_print_char(va_arg(lst_arg, int), flags);
+		ret = ft_char_flags(va_arg(lst_arg, int), flags);
 	if (s[*i] == 's')
-		ret = ft_print_string(va_arg(lst_arg, char *), flags);
+		ret = ft_string_flags(va_arg(lst_arg, char *), flags);
 	if (s[*i] == 'd' || s[*i] == 'u')
-		ret = ft_print_number(va_arg(lst_arg, int), flags);
+		ret = ft_number_flags(va_arg(lst_arg, int), flags);
+	if (s[*i] == 'i')
+		ret = ft_number_flags(va_arg(lst_arg, unsigned int), flags);
 	if (s[*i] == 'p')
-		ret = ft_print_pnt(va_arg(lst_arg, unsigned long), flags);
+		ret = ft_pnt_flags(va_arg(lst_arg, unsigned long), flags);
+	if (s[*i] == 'x')
+		ret = ft_hexa_flags(va_arg(lst_arg, unsigned int), flags, 0);
+	if (s[*i] == 'X')
+		ret = ft_hexa_flags(va_arg(lst_arg, unsigned int), flags, 1);
 	if (s[*i] != '\0')
 		(*i)++;
 	return (ret);

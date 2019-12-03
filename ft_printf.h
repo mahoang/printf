@@ -6,7 +6,7 @@
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 18:22:19 by mahoang           #+#    #+#             */
-/*   Updated: 2019/12/03 14:45:06 by mahoang          ###   ########.fr       */
+/*   Updated: 2019/12/03 16:00:04 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,19 @@ int					is_not_flag(const char c);
 void				ft_flag(const char *s, int *i, struct s_flags *flags, va_list lst_arg);
 int					ft_access(const char *s, int *i, va_list lst_arg);
 //char
-int					ft_print_char(const char c, struct s_flags flags);
-int					ft_putchar(const char c);
+int		ft_char_flags(char c, struct s_flags flags);
+int		ft_putchar(char c);
 //string
-int		ft_strlen(const char *c);
-int		ft_print_string(const char *c, struct s_flags flags);
-int		ft_putstr(const char *c);
+int		ft_strlen(char *c);
+int		ft_string_flags(char *c, struct s_flags flags);
+int		ft_putstr(char *c);
 //nbr
-int		ft_print_number(unsigned long nb, struct s_flags flags);
-int		ft_putnbr(unsigned long nb);
+int		ft_number_flags(long nb, struct s_flags flags);
+int		ft_putnbr(long nb);
 //pnt
-int		ft_print_pnt(unsigned long nb, struct s_flags flags);
+int		ft_pnt_flags(unsigned long nb, struct s_flags flags);
 int		ft_putpnt(unsigned long nb, int firsttime);
+//hexa
+int		ft_hexa_flags(unsigned int nb, struct s_flags flags, int maj);
+int		ft_puthex(unsigned int nb, int maj);
 #endif

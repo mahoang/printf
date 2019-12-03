@@ -6,7 +6,7 @@
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 17:07:31 by mahoang           #+#    #+#             */
-/*   Updated: 2019/12/03 14:52:57 by mahoang          ###   ########.fr       */
+/*   Updated: 2019/12/03 18:31:58 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,18 @@
 
 int main(int ac, char **av)
 {
-	char *c = "b";
-	char *d = "je fais actuellement";
+	char *c = "Geb";
+	char *d = "Hello, World!G";
 	int integer = 3;
 	long ptr = 123456789;
 	char *e = "tests";
-	printf("%p\n", (void *)ptr);
-	ft_printf("%p\n", (void *)ptr);
+	unsigned int hexa = 45;
+
+
+	int ftret = ft_printf("%s\n", d);
+	ft_printf("%s\n%d\n", d, ftret);
+	int ret = ft_printf("%s\n", d);
+	printf("%s\n%d", d, ret);
 	return 0;
 }
  //https://www.rocq.inria.fr/secret/Anne.Canteaut/COURS_C/cours.pdf

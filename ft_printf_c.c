@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_c.c                                       :+:      :+:    :+:   */
+/*   ft_printf_c.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 12:32:07 by mahoang           #+#    #+#             */
-/*   Updated: 2019/12/02 20:15:50 by mahoang          ###   ########.fr       */
+/*   Updated: 2019/12/03 16:01:51 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_print_char(const char c, struct s_flags flags)
+int		ft_char_flags(const char c, struct s_flags flags)
 {
 	if (flags.width > 0 && flags.minus == 1)
 		return (0);

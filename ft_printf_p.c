@@ -6,13 +6,13 @@
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 13:32:14 by mahoang           #+#    #+#             */
-/*   Updated: 2019/12/03 14:53:43 by mahoang          ###   ########.fr       */
+/*   Updated: 2019/12/03 16:02:28 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_print_pnt(unsigned long nb, struct s_flags flags)
+int		ft_pnt_flags(unsigned long nb, struct s_flags flags)
 {
 	if (flags.width > 0 && flags.minus == 1)
 		return (0);
