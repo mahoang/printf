@@ -6,19 +6,23 @@
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 17:07:31 by mahoang           #+#    #+#             */
-/*   Updated: 2019/11/12 18:19:05 by mahoang          ###   ########.fr       */
+/*   Updated: 2019/12/03 14:52:57 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include "ft_printf.h"
 
 int main(int ac, char **av)
 {
-	int i = 44;
-	char c = 'v';
-	char s[10] = "prout";
-	printf("%c et %i et %s\n", c, i, s);
-	printf("%d", ft_atoi(s[10]));
+	char *c = "b";
+	char *d = "je fais actuellement";
+	int integer = 3;
+	long ptr = 123456789;
+	char *e = "tests";
+	printf("%p\n", (void *)ptr);
+	ft_printf("%p\n", (void *)ptr);
+	return 0;
 }
  //https://www.rocq.inria.fr/secret/Anne.Canteaut/COURS_C/cours.pdf
 

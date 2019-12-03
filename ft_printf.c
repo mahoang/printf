@@ -6,76 +6,85 @@
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 16:50:28 by mahoang           #+#    #+#             */
-/*   Updated: 2019/11/21 13:19:06 by mahoang          ###   ########.fr       */
+/*   Updated: 2019/12/03 14:45:57 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-//s
-void	ft_printf_str(va_list *lst_var);
+int		is_not_flag(const char c)
 {
-	char *src = va_arg(*lst_var, char *);
-
-	write(1, src, strlen(src));
+	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i')
+		return (1);
+	if (c == 'u' || c == 'x' || c == 'X' || c == '%')
+		return (1);
+	return (0);
 }
-//c
-void	ft_printf_char(va_list *lst_var)
-{
-	unsigned char c = va_arg(*lst_var, int)
-	write(1, &c, 1);
-}
-// d | i
-void	ft_printf_nbr(va_list *lst_var)
-{
-	int num = va_arg(*lst_var, int);
-	size_t c;
 
-	c = 0;
-	if (num == -2147483648)
+/*a modifier pour la gestion des flags*/
+
+void	ft_flag(const char *s, int *i, struct s_flags *flags, va_list lst_arg)
+{
+	flags->minus = 0;
+	flags->zero = 0;
+	flags->dot = 0;
+	flags->precision = 0;
+	flags->width = 0;
+	while (is_not_flag(s[*i]) == 0)
 	{
-		ft_putchar('-');
-		ft_putchar('2');
-		ft_putnbr_fd(147483648);
-		return ;
+		//(*i++);
 	}
-	if (num < 0)
-	{
-		ft_putchar('-');
-		num = -num;
-	}
-	if (num >= 10)
-		ft_putnbr_fd(num / 10);
-	ft_putchar_fd((num % 10) + '0');
 }
 
-//p | u | x | X | %
-// - | 0 | .| *
+/* a modifier pour tout sauf c s d et u*/
 
-int ft_chrIndex(char *tab, char element)
+int		ft_access(const char *s, int *i, va_list lst_arg)
 {
-	int index = 0;
+	struct s_flags	flags;
+	int				ret;
 
-	while (tab[index] != 0)
-	{
-		if (tab[index] == element)
-			return (index);
-		index++;
-	}
-	return (-1);
+	(*i)++;
+	ft_flag(s, i, &flags, lst_arg);
+	if (s[*i] == 'c')
+		ret = ft_print_char(va_arg(lst_arg, int), flags);
+	if (s[*i] == 's')
+		ret = ft_print_string(va_arg(lst_arg, char *), flags);
+	if (s[*i] == 'd' || s[*i] == 'u')
+		ret = ft_print_number(va_arg(lst_arg, int), flags);
+	if (s[*i] == 'p')
+		ret = ft_print_pnt(va_arg(lst_arg, unsigned long), flags);
+	if (s[*i] != '\0')
+		(*i)++;
+	return (ret);
 }
+
 int		ft_printf(const char *str, ...)
 {
-	void (*tabfunction[]) (va_list *) = {ft_printf_char, ft_printf_str, ft_printf_nbr, ft_printf_nbr,};
-	char *tabindex;
-	va_list lst_var;
-	int i;
+	va_list	lst_arg;
+	int		i;
+	int		ret;
 
 	i = 0;
-	va_start(lst_var, str);
-	va_end(lst_var);
+	ret = 0;
+	va_start(lst_arg, str);
+	while (str[i] != '\0')
+	{
+		if (str[i] == '%')
+		{
+			ret += ft_access(str, &i, lst_arg);
+			//i++;
+		}
+		else
+		{
+			write(1, &str[i++], 1);
+			ret++;
+		}
+	}
+	va_end(lst_arg);
+	return (ret);
 }
 
+// puxX
 // cspdiuxX%
 // conversion -c/-s
 
