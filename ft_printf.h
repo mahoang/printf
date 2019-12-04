@@ -6,7 +6,7 @@
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 18:22:19 by mahoang           #+#    #+#             */
-/*   Updated: 2019/12/03 16:00:04 by mahoang          ###   ########.fr       */
+/*   Updated: 2019/12/04 11:23:15 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ int			precision;
 int			width;
 }					t_list;
 
-int					ft_printf(const char *str, ...);
+int		ft_printf(const char *str, ...);
 //flag
-int					is_not_flag(const char c);
-void				ft_flag(const char *s, int *i, struct s_flags *flags, va_list lst_arg);
-int					ft_access(const char *s, int *i, va_list lst_arg);
+int		is_not_flag(const char c);
+int		contain_flag(const char c);
+int		ft_atoi(const char *s, int *i, va_list lst_arg);
+void	ft_flag(const char *s, int *i, struct s_flags *flags, va_list lst_arg);
+int		ft_access(const char *s, int *i, va_list lst_arg);
 //char
 int		ft_char_flags(char c, struct s_flags flags);
 int		ft_putchar(char c);

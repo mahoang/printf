@@ -6,7 +6,7 @@
 #    By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/10 18:32:53 by mahoang           #+#    #+#              #
-#    Updated: 2019/12/03 15:46:20 by mahoang          ###   ########.fr        #
+#    Updated: 2019/12/04 11:19:14 by mahoang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ CC = gcc
 HEADER = fr_printf.h
 
 SRC     = ft_printf.c \
+ft_flags.c \
 ft_printf_c.c \
 ft_printf_s.c \
 ft_printf_du.c \
