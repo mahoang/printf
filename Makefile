@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+         #
+#    By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/10 18:32:53 by mahoang           #+#    #+#              #
-#    Updated: 2019/12/04 11:19:14 by mahoang          ###   ########.fr        #
+#    Updated: 2019/12/28 10:46:39 by zephyrus         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = libftprintf.a
 
 CC = gcc
 
-#CFLAGS = -Werror -Wextra -Wall
+CFLAGS = -Werror -Wextra -Wall -g3
 
 HEADER = fr_printf.h
 

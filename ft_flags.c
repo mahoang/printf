@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flags.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 11:19:16 by mahoang           #+#    #+#             */
-/*   Updated: 2019/12/04 11:23:29 by mahoang          ###   ########.fr       */
+/*   Updated: 2019/12/28 11:12:54 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		is_not_flag(const char c)
+int		is_conversion(const char c)
 {
 	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i')
 		return (1);
@@ -23,7 +23,7 @@ int		is_not_flag(const char c)
 
 int		contain_flag(const char c)
 {
-	if (c == '-' || c == '*' || c == '.' || c == ' ' || (c > '0' && c <= '9'))
+	if (c == '-' || c == '*' || c == '.' || c == ' ' || (c >= '0' && c <= '9'))
 		return (1);
 	return (0);
 }
@@ -53,7 +53,7 @@ void	ft_flag(const char *s, int *i, struct s_flags *flags, va_list lst_arg)
 	flags->dot = 0;
 	flags->precision = 0;
 	flags->width = 0;
-	while (is_not_flag(s[*i]) == 0 && contain_flag(s[*i] == 1))
+	while ((is_conversion(s[*i]) == 0) && contain_flag(s[*i]) == 1)
 	{
 		if (s[*i] == '-')
 			flags->minus = 1;
@@ -67,5 +67,6 @@ void	ft_flag(const char *s, int *i, struct s_flags *flags, va_list lst_arg)
 		if (s[*i] == '*' || (s[*i] > '0' && s[*i] <= '9'))
 			flags->width = ft_atoi(s, i, lst_arg);
 		//si width ou precision < 0 alors faire qqch;
+		(*i)++;
 	}
 }

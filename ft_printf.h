@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 18:22:19 by mahoang           #+#    #+#             */
-/*   Updated: 2019/12/04 11:23:15 by mahoang          ###   ########.fr       */
+/*   Updated: 2019/12/28 10:41:42 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-#define PRINTF_H
+#ifndef FT_PRINTF_H
+#define FT_PRINTF_H
 
 #include <stdarg.h>
 #include <unistd.h>
@@ -28,13 +28,16 @@ int			width;
 
 int		ft_printf(const char *str, ...);
 //flag
-int		is_not_flag(const char c);
+int		is_conversion(const char c);
 int		contain_flag(const char c);
 int		ft_atoi(const char *s, int *i, va_list lst_arg);
 void	ft_flag(const char *s, int *i, struct s_flags *flags, va_list lst_arg);
 int		ft_access(const char *s, int *i, va_list lst_arg);
 //char
 int		ft_char_flags(char c, struct s_flags flags);
+int		ft_putchar_minus_width(int c, int width);
+int		ft_putchar_zero_width(int c, int width);
+int		ft_putchar_width(int c, int width);
 int		ft_putchar(char c);
 //string
 int		ft_strlen(char *c);

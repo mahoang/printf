@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
+/*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 16:50:28 by mahoang           #+#    #+#             */
-/*   Updated: 2019/12/04 11:20:34 by mahoang          ###   ########.fr       */
+/*   Updated: 2019/12/28 11:13:58 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		ft_access(const char *s, int *i, va_list lst_arg)
 
 	(*i)++;
 	ft_flag(s, i, &flags, lst_arg);
+	//(*i)++;
 	if (s[*i] == 'c')
 		ret = ft_char_flags(va_arg(lst_arg, int), flags);
 	if (s[*i] == 's')
