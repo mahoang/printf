@@ -6,7 +6,7 @@
 #    By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/10 18:32:53 by mahoang           #+#    #+#              #
-#    Updated: 2019/12/28 10:46:39 by zephyrus         ###   ########.fr        #
+#    Updated: 2020/01/21 04:31:58 by zephyrus         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = libftprintf.a
 
 CC = gcc
 
-CFLAGS = -Werror -Wextra -Wall -g3
+CFLAGS = -Wextra -Wall -g3
 
 HEADER = fr_printf.h
 

@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 16:50:28 by mahoang           #+#    #+#             */
-/*   Updated: 2019/12/28 11:13:58 by zephyrus         ###   ########.fr       */
+/*   Updated: 2020/01/22 04:40:19 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,22 @@ int		ft_access(const char *s, int *i, va_list lst_arg)
 
 	(*i)++;
 	ft_flag(s, i, &flags, lst_arg);
-	//(*i)++;
 	if (s[*i] == 'c')
 		ret = ft_char_flags(va_arg(lst_arg, int), flags);
-	if (s[*i] == 's')
+	else if (s[*i] == 's')
 		ret = ft_string_flags(va_arg(lst_arg, char *), flags);
-	if (s[*i] == 'd' || s[*i] == 'u')
+	else if (s[*i] == 'd' || s[*i] == 'i')
 		ret = ft_number_flags(va_arg(lst_arg, int), flags);
-	if (s[*i] == 'i')
-		ret = ft_number_flags(va_arg(lst_arg, unsigned int), flags);
-	if (s[*i] == 'p')
+	else if (s[*i] == 'u')
+		ret = ft_number_flags(va_arg(lst_arg, unsigned long), flags);
+	else if (s[*i] == 'p')
 		ret = ft_pnt_flags(va_arg(lst_arg, unsigned long), flags);
-	if (s[*i] == 'x')
+	else if (s[*i] == 'x')
 		ret = ft_hexa_flags(va_arg(lst_arg, unsigned int), flags, 0);
-	if (s[*i] == 'X')
+	else if (s[*i] == 'X')
 		ret = ft_hexa_flags(va_arg(lst_arg, unsigned int), flags, 1);
+	else
+		ret = ft_print_misc(s[*i], flags);
 	if (s[*i] != '\0')
 		(*i)++;
 	return (ret);
@@ -60,4 +61,23 @@ int		ft_printf(const char *str, ...)
 	}
 	va_end(lst_arg);
 	return (ret);
+}
+
+int		ft_print_misc(char c, struct s_flags flags)
+{
+	//int pad;
+
+	//pad = flags.width - 1;
+	if (c == '\0')
+		return (0);
+	/*while (flags.minus == 0 && flags.zero == 0 && pad-- > 0)
+		write(1, " ", 1);
+	while (flags.minus == 0 && flags.zero == 1 && pad-- > 0)
+		write(1, "0", 1);
+	*/write(1, &c, 1);
+	//while (flags.minus == 1 && pad-- > 0)
+	//	write(1, " ", 1);
+	//if (flags.width > 0)
+	//	return (flags.width);
+	return (1);
 }

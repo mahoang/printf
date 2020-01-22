@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 11:19:16 by mahoang           #+#    #+#             */
-/*   Updated: 2019/12/28 11:12:54 by zephyrus         ###   ########.fr       */
+/*   Updated: 2020/01/19 07:14:19 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,21 @@ int		ft_atoi(const char *s, int *i, va_list lst_arg)
 	return (count);
 }
 
+void	ft_negative_flag(struct s_flags *flags)
+{
+	if (flags->precision < 0)
+	{
+		flags->dot = 0;
+		flags->precision = 0;
+	}
+	else if (flags->width < 0)
+	{
+		flags->minus = 0;
+		flags->width = -flags->width;
+	}
+	return;
+}
+
 void	ft_flag(const char *s, int *i, struct s_flags *flags, va_list lst_arg)
 {
 	flags->minus = 0;
@@ -57,16 +72,17 @@ void	ft_flag(const char *s, int *i, struct s_flags *flags, va_list lst_arg)
 	{
 		if (s[*i] == '-')
 			flags->minus = 1;
-		if (s[*i] == '0')
+		else if (s[*i] == '0')
 			flags->zero = 1;
-		if (s[*i] == '.')
+		else if (s[*i] == '.')
 		{
 			flags->dot = 1;
-			flags->width = ft_atoi(s, i, lst_arg);
+			flags->precision = ft_atoi(s, i, lst_arg);
 		}
-		if (s[*i] == '*' || (s[*i] > '0' && s[*i] <= '9'))
+		else if (s[*i] == '*' || (s[*i] >= '1' && s[*i] <= '9'))
 			flags->width = ft_atoi(s, i, lst_arg);
-		//si width ou precision < 0 alors faire qqch;
+		if (flags->precision < 0 || flags->width < 0)
+			ft_negative_flag(flags);
 		(*i)++;
 	}
 }
