@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 16:50:28 by mahoang           #+#    #+#             */
-/*   Updated: 2020/01/22 04:40:19 by zephyrus         ###   ########.fr       */
+/*   Updated: 2020/01/23 23:57:38 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,19 +65,19 @@ int		ft_printf(const char *str, ...)
 
 int		ft_print_misc(char c, struct s_flags flags)
 {
-	//int pad;
+	int pad;
 
-	//pad = flags.width - 1;
+	pad = flags.width - 1;
 	if (c == '\0')
 		return (0);
-	/*while (flags.minus == 0 && flags.zero == 0 && pad-- > 0)
+	while (flags.minus == 0 && flags.zero == 0 && pad-- > 0)
 		write(1, " ", 1);
 	while (flags.minus == 0 && flags.zero == 1 && pad-- > 0)
 		write(1, "0", 1);
-	*/write(1, &c, 1);
-	//while (flags.minus == 1 && pad-- > 0)
-	//	write(1, " ", 1);
-	//if (flags.width > 0)
-	//	return (flags.width);
+	write(1, &c, 1);
+	while (flags.minus == 1 && pad-- > 0)
+		write(1, " ", 1);
+	if (flags.width > 0)
+		return (flags.width);
 	return (1);
 }

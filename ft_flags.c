@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_flags.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 11:19:16 by mahoang           #+#    #+#             */
-/*   Updated: 2020/01/19 07:14:19 by zephyrus         ###   ########.fr       */
+/*   Updated: 2020/01/23 23:58:04 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	ft_negative_flag(struct s_flags *flags)
 		flags->minus = 0;
 		flags->width = -flags->width;
 	}
-	return;
+	return ;
 }
 
 void	ft_flag(const char *s, int *i, struct s_flags *flags, va_list lst_arg)
