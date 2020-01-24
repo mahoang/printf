@@ -6,7 +6,7 @@
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 17:07:31 by mahoang           #+#    #+#             */
-/*   Updated: 2020/01/24 03:12:45 by mahoang          ###   ########.fr       */
+/*   Updated: 2020/01/24 03:59:33 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main(int ac, char **av)
 {
 	char *c = "0x103056";
 	char *d = "Hello, World!G";
-	int integer = -3;
+	int integer = -54;
 	int integer2 = 0;
 	long ptr = 123456789;
 	char *e = "tests";
@@ -26,8 +26,8 @@ int main(int ac, char **av)
 	// int ret2 = ft_printf("%.6i\n", integer);
 	// printf("valeur printf = %d\n", ret1);
 	// printf("valeur ft_printf = %d\n\n", ret2);
-	int ret3 = ft_printf("%.5p\n", 0);
-	int ret4 = printf("%.5p\n", 0);
+	int ret3 = ft_printf("%0*i\n", -7, integer);
+	int ret4 = printf("%0*i\n", -7, integer);
 	printf("valeur ft_printf = %d\n", ret3);
 	printf("valeur printf = %d\n", ret4);
 

@@ -6,7 +6,7 @@
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 10:35:24 by mahoang           #+#    #+#             */
-/*   Updated: 2020/01/24 01:10:56 by mahoang          ###   ########.fr       */
+/*   Updated: 2020/01/24 04:10:24 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,14 @@
 int		ft_number_flags(long nb, struct s_flags flags)
 {
 	int c;
-
+	// printf("minus %i\n", flags.minus);
+	// printf("width %i\n", flags.width);
+	// printf("dot %i\n", flags.dot);
+	// printf("prec %i\n", flags.precision);
 	c = 0;
 	if (flags.dot == 1 && flags.precision >= 0 && nb == 0)
 	{
-		//printf("test1");
-		// printf("minus %i\n", flags.minus);
-		// printf("width %i\n", flags.width);
-		// printf("dot %i\n", flags.dot);
-		// printf("prec %i\n", flags.precision);
+
 		c = (flags.precision > flags.width) ? flags.precision : flags.width;
 		if (flags.minus == 0 && c == flags.precision)
 		{
@@ -149,6 +148,16 @@ int		ft_putnbr_prec(long nb, struct s_flags flags)
 		write(1, "-", 1);
 		nb = -nb;
 		ret++;
+	}
+	if (flags.minus == 1)
+	{
+		ret += ft_putnbr(nb);
+		while (pad-- > 1)
+		{
+			write(1, " ", 1);
+			ret++;
+		}
+		return (ret);
 	}
 	while (pad-- > 0)
 	{

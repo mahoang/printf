@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_s.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 20:17:49 by mahoang           #+#    #+#             */
-/*   Updated: 2020/01/19 07:26:54 by zephyrus         ###   ########.fr       */
+/*   Updated: 2020/01/24 03:19:28 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ int		ft_string_flags(char *c, struct s_flags flags)
 	}
 	else
 	{
-	if (flags.width > 0 && flags.dot == 1)
-		return (ft_putstr_width_dot(c, flags));
-	else if (flags.width > 0)
-		return (ft_putstr_width(c, flags));
-	else if (flags.dot == 1)
-		return (ft_putstr_prec(c, flags.precision));
-	else
-		return (ft_putstr(c));
+		if (flags.width > 0 && flags.dot == 1)
+			return (ft_putstr_width_dot(c, flags));
+		else if (flags.width > 0)
+			return (ft_putstr_width(c, flags));
+		else if (flags.dot == 1)
+			return (ft_putstr_prec(c, flags.precision));
+		else
+			return (ft_putstr(c));
 	}
 }
 
@@ -65,10 +65,10 @@ int		ft_putstr(char *c)
 
 int		ft_putstr_width_dot(char *c, struct s_flags flags)
 {
-	char i;
-	int pad;
-	int a;
-	int ret;
+	char	i;
+	int		pad;
+	int		a;
+	int		ret;
 
 	i = ' ';
 	if (flags.zero == 1 && flags.minus == 0)
@@ -89,9 +89,9 @@ int		ft_putstr_width_dot(char *c, struct s_flags flags)
 
 int		ft_putstr_width(char *c, struct s_flags flags)
 {
-	char i;
-	int a;
-	int pad;
+	char	i;
+	int		a;
+	int		pad;
 
 	i = ' ';
 	if (flags.zero == 1 && flags.minus == 0)

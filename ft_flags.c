@@ -6,7 +6,7 @@
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/04 11:19:16 by mahoang           #+#    #+#             */
-/*   Updated: 2020/01/23 23:58:04 by mahoang          ###   ########.fr       */
+/*   Updated: 2020/01/24 03:57:39 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		ft_atoi(const char *s, int *i, va_list lst_arg)
 	if (s[*i] == '.')
 		(*i)++;
 	if (s[*i] == '*')
-		return (count = va_arg(lst_arg, int));
+		return (count = va_arg(lst_arg, unsigned int));
 	while (s[*i] >= '0' && s[*i] <= '9')
 	{
 		count = count * 10 + (s[*i] - '0');
@@ -55,7 +55,7 @@ void	ft_negative_flag(struct s_flags *flags)
 	}
 	else if (flags->width < 0)
 	{
-		flags->minus = 0;
+		flags->minus = 1;
 		flags->width = -flags->width;
 	}
 	return ;
