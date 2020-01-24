@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+         #
+#    By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/10 18:32:53 by mahoang           #+#    #+#              #
-#    Updated: 2020/01/21 04:31:58 by zephyrus         ###   ########.fr        #
+#    Updated: 2020/01/24 05:22:26 by mahoang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = libftprintf.a
 
 CC = gcc
 
-CFLAGS = -Wextra -Wall -g3
+CFLAGS = -Werror -Wextra -Wall -g3
 
 HEADER = fr_printf.h
 
@@ -24,7 +24,8 @@ ft_printf_c.c \
 ft_printf_s.c \
 ft_printf_du.c \
 ft_printf_p.c \
-ft_printf_xX.c \
+ft_printf_x.c \
+ft_printf_misc.c \
 
 OBJ = $(SRC:.c=.o)
 

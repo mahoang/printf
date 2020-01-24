@@ -6,7 +6,7 @@
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 20:17:49 by mahoang           #+#    #+#             */
-/*   Updated: 2020/01/24 03:19:28 by mahoang          ###   ########.fr       */
+/*   Updated: 2020/01/24 05:07:47 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,32 +20,6 @@ int		ft_strlen(char *c)
 	while (c[i])
 		i++;
 	return (i);
-}
-
-int		ft_string_flags(char *c, struct s_flags flags)
-{
-	if (c == NULL)
-	{
-		if (flags.width > 0 && flags.dot == 1)
-			return (ft_putstr_width_dot("(null)", flags));
-		else if (flags.width > 0)
-			return (ft_putstr_width("(null)", flags));
-		else if (flags.dot == 1)
-			return (ft_putstr_prec("(null)", flags.precision));
-		else
-			return (ft_putstr("(null)"));
-	}
-	else
-	{
-		if (flags.width > 0 && flags.dot == 1)
-			return (ft_putstr_width_dot(c, flags));
-		else if (flags.width > 0)
-			return (ft_putstr_width(c, flags));
-		else if (flags.dot == 1)
-			return (ft_putstr_prec(c, flags.precision));
-		else
-			return (ft_putstr(c));
-	}
 }
 
 int		ft_putstr(char *c)

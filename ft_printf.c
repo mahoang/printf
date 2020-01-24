@@ -6,7 +6,7 @@
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 16:50:28 by mahoang           #+#    #+#             */
-/*   Updated: 2020/01/23 23:57:38 by mahoang          ###   ########.fr       */
+/*   Updated: 2020/01/24 06:27:54 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,11 @@ int		ft_print_misc(char c, struct s_flags flags)
 	if (flags.width > 0)
 		return (flags.width);
 	return (1);
+}
+
+int		ft_towrite(long nb, char a)
+{
+	write(1, &a, 1);
+	nb = -nb;
+	return (nb);
 }

@@ -1,79 +1,73 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_du.c                                     :+:      :+:    :+:   */
+/*   ft_printf_x.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/03 10:35:24 by mahoang           #+#    #+#             */
-/*   Updated: 2020/01/24 06:27:46 by mahoang          ###   ########.fr       */
+/*   Created: 2019/12/03 15:34:40 by mahoang           #+#    #+#             */
+/*   Updated: 2020/01/24 05:10:26 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_nbrlen(long nb)
+int		ft_hexlen(unsigned int nb)
 {
-	int ret;
+	int len;
 
-	ret = 0;
+	len = 0;
 	if (nb == 0)
 		return (1);
-	if (nb < 0)
+	while (nb > 0)
 	{
-		nb = -nb;
-		ret++;
+		nb = nb / 16;
+		len++;
 	}
-	while (nb >= 1)
-	{
-		nb = nb / 10;
-		ret++;
-	}
-	return (ret);
+	return (len);
 }
 
-int		ft_putnbr_width_prec(long nb, struct s_flags flags)
+int		ft_puthex_width_prec(unsigned int nb, struct s_flags flags, int maj)
 {
 	int		ret;
 	int		count;
 	int		pad;
 
-	count = flags.precision - ft_nbrlen(nb);
+	ret = 0;
+	count = flags.precision - ft_hexlen(nb);
 	count += (nb < 0) ? 1 : 0;
 	count = (count > 0) ? count : 0;
-	pad = flags.width - ft_nbrlen(nb) - count;
+	pad = flags.width - ft_hexlen(nb) - count;
 	pad = (pad > 0) ? pad : 0;
-	ret = pad + count + ft_nbrlen(nb);
+	ret += pad + count + ft_hexlen(nb);
 	while (flags.minus == 0 && pad-- > 0)
 		write(1, " ", 1);
 	if (nb < 0)
-		nb = ft_towrite(nb, '-');
+	{
+		write(1, "-", 1);
+		nb = -nb;
+	}
 	while (count-- > 0)
 		write(1, "0", 1);
-	if (nb == 0 && flags.precision != 0 && count-- && pad--)
-		write(1, "0", 1);
-	if (nb != 0)
-		ft_putnbr(nb);
-	else
-		write(1, " ", 1);
+	ft_puthex(nb, maj);
 	while (flags.minus == 1 && pad-- > 0)
 		write(1, " ", 1);
 	return (ret);
 }
 
-int		ft_putnbr_width(long nb, struct s_flags flags)
+int		ft_puthex_width(unsigned int nb, struct s_flags flags, int maj)
 {
 	int ret;
 	int pad;
 
 	ret = 0;
-	pad = flags.width - ft_nbrlen(nb);
+	pad = (flags.width - ft_hexlen(nb));
 	while (flags.minus == 0 && pad-- > 0)
 	{
 		write(1, " ", 1);
 		ret++;
 	}
-	ret += ft_putnbr(nb);
+	ret += ft_puthex(nb, maj);
 	while (flags.minus == 1 && pad-- > 0)
 	{
 		write(1, " ", 1);
@@ -82,48 +76,47 @@ int		ft_putnbr_width(long nb, struct s_flags flags)
 	return (ret);
 }
 
-int		ft_putnbr_prec(long nb, struct s_flags flags)
+int		ft_puthex_prec(unsigned int nb, struct s_flags flags, int maj)
 {
 	int ret;
 	int pad;
 
 	ret = 0;
 	pad = (flags.dot == 1) ? flags.precision : flags.width;
-	pad -= (flags.minus == 0) ? ft_nbrlen(nb) : ft_nbrlen(nb) - 1;
-	if (nb < 0)
-	{
-		nb = ft_towrite(nb, '-');
-		ret++;
-	}
+	pad -= (flags.minus == 0) ? ft_hexlen(nb) : ft_hexlen(nb) - 1;
 	if (flags.minus == 1)
 	{
-		ret += ft_putnbr(nb);
-		while (pad-- > 1 && ret++)
-			write(1, " ", 1);
-		return (ret);
+		write(1, "-", 1);
+		nb = -nb;
+		ret++;
 	}
-	while (pad-- > 0 && ret++)
+	while (pad-- > 0)
+	{
 		write(1, "0", 1);
-	ret += ft_putnbr(nb);
+		ret++;
+	}
+	ret += ft_puthex(nb, maj);
 	return (ret);
 }
 
-int		ft_putnbr(long nb)
+int		ft_puthex(unsigned int nb, int maj)
 {
-	char	c;
 	int		ret;
+	int		c;
+	char	*set;
 
+	c = 0;
 	ret = 0;
-	if (nb < 0)
+	if (maj == 1)
+		set = "0123456789ABCDEF";
+	else
+		set = "0123456789abcdef";
+	if (nb / 16 > 0)
 	{
-		write(1, "-", 1);
-		ret++;
-		nb = -nb;
+		ret += ft_puthex(nb / 16, maj);
 	}
-	if (nb / 10 > 0)
-		ret += ft_putnbr(nb / 10);
-	c = nb % 10 + 48;
-	write(1, &c, 1);
+	c = nb % 16;
+	write(1, &set[c], 1);
 	ret++;
 	return (ret);
 }
