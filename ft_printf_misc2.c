@@ -6,7 +6,7 @@
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 05:51:20 by mahoang           #+#    #+#             */
-/*   Updated: 2020/01/27 07:28:14 by mahoang          ###   ########.fr       */
+/*   Updated: 2020/01/27 10:48:48 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int		ft_nbr_0(long nb, struct s_flags flags)
 
 	c = 0;
 	c = (flags.precision > flags.width) ? flags.precision : flags.width;
-	if (flags.minus == 0 && c == flags.precision)
+	if (flags.zero == 0 && flags.minus == 0 && c == flags.precision)
 		ft_nbr_1(flags, c);
-	if (flags.minus == 0 && c == flags.width)
+	if (flags.zero == 0 && flags.minus == 0 && c == flags.width)
 		ft_nbr_2(flags, c);
 	if (flags.minus == 1 && flags.dot == 1 && flags.width == 0)
 	{
@@ -30,6 +30,10 @@ int		ft_nbr_0(long nb, struct s_flags flags)
 			return (flags.width);
 		return (flags.precision);
 	}
+	if (flags.zero == 1 && c == flags.precision)
+		ft_nbr_2(flags, c);
+	if (flags.zero == 1 && c == flags.width)
+		ft_nbr_3(flags, c);
 	if (flags.minus == 1)
 		return (ft_putnbr_width_prec(nb, flags));
 	if (flags.width > flags.precision)
@@ -43,6 +47,14 @@ void	ft_nbr_1(struct s_flags flags, int c)
 		write(1, "0", 1);
 	while (c-- >= 0)
 		write(1, " ", 1);
+}
+
+void	ft_nbr_3(struct s_flags flags, int c)
+{
+	while (c-- > flags.precision)
+		write(1, " ", 1);
+	while (c-- >= 0)
+		write(1, "0", 1);
 }
 
 void	ft_nbr_2(struct s_flags flags, int c)
