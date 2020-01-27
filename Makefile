@@ -6,7 +6,7 @@
 #    By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/10 18:32:53 by mahoang           #+#    #+#              #
-#    Updated: 2020/01/24 05:22:26 by mahoang          ###   ########.fr        #
+#    Updated: 2020/01/27 05:51:07 by mahoang          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ ft_printf_du.c \
 ft_printf_p.c \
 ft_printf_x.c \
 ft_printf_misc.c \
+ft_printf_misc2.c \
 
 OBJ = $(SRC:.c=.o)
 

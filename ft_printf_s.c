@@ -6,7 +6,7 @@
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 20:17:49 by mahoang           #+#    #+#             */
-/*   Updated: 2020/01/24 05:07:47 by mahoang          ###   ########.fr       */
+/*   Updated: 2020/01/27 00:25:59 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		ft_strlen(char *c)
 	return (i);
 }
 
-int		ft_putstr(char *c)
+int		ft_putstr1(char *c)
 {
 	int i;
 	int ret;

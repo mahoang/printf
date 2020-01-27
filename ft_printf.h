@@ -6,7 +6,7 @@
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 18:22:19 by mahoang           #+#    #+#             */
-/*   Updated: 2020/01/24 06:22:07 by mahoang          ###   ########.fr       */
+/*   Updated: 2020/01/27 05:49:39 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <limits.h>
 
 typedef struct	s_flags
 {
@@ -51,7 +52,7 @@ int				ft_putchar(char c);
 */
 int				ft_strlen(char *c);
 int				ft_string_flags(char *c, struct s_flags flags);
-int				ft_putstr(char *c);
+int				ft_putstr1(char *c);
 int				ft_nbr_0(long nb, struct s_flags flags);
 int				ft_putstr_width_dot(char *c, struct s_flags flags);
 int				ft_putstr_width(char *c, struct s_flags flags);
@@ -62,10 +63,13 @@ int				ft_putstr_prec(char *c, int prec);
 int				ft_number_flags(long nb, struct s_flags flags);
 int				ft_putnbr(long nb);
 int				ft_nbrlen(long nb);
-int				ft_towrite(long nb, char a);
+long			ft_towrite(long nb);
 int				ft_putnbr_width(long nb, struct s_flags flags);
 int				ft_putnbr_prec(long nb, struct s_flags flags);
 int				ft_putnbr_width_prec(long nb, struct s_flags flags);
+int				ft_nbr_0(long nb, struct s_flags flags);
+void			ft_nbr_1(struct s_flags flags, int c);
+void			ft_nbr_2(struct s_flags flags, int c);
 /*
 **	pnt
 */

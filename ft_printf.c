@@ -6,7 +6,7 @@
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 16:50:28 by mahoang           #+#    #+#             */
-/*   Updated: 2020/01/24 06:27:54 by mahoang          ###   ########.fr       */
+/*   Updated: 2020/01/27 03:36:33 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		ft_access(const char *s, int *i, va_list lst_arg)
 	else if (s[*i] == 'd' || s[*i] == 'i')
 		ret = ft_number_flags(va_arg(lst_arg, int), flags);
 	else if (s[*i] == 'u')
-		ret = ft_number_flags(va_arg(lst_arg, unsigned long), flags);
+		ret = ft_number_flags(va_arg(lst_arg, unsigned int), flags);
 	else if (s[*i] == 'p')
 		ret = ft_pnt_flags(va_arg(lst_arg, unsigned long), flags);
 	else if (s[*i] == 'x')
@@ -82,9 +82,9 @@ int		ft_print_misc(char c, struct s_flags flags)
 	return (1);
 }
 
-int		ft_towrite(long nb, char a)
+long	ft_towrite(long nb)
 {
-	write(1, &a, 1);
+	write(1, "-", 1);
 	nb = -nb;
 	return (nb);
 }

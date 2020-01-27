@@ -6,7 +6,7 @@
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 10:35:24 by mahoang           #+#    #+#             */
-/*   Updated: 2020/01/24 06:27:46 by mahoang          ###   ########.fr       */
+/*   Updated: 2020/01/27 05:17:10 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		ft_putnbr_width_prec(long nb, struct s_flags flags)
 	while (flags.minus == 0 && pad-- > 0)
 		write(1, " ", 1);
 	if (nb < 0)
-		nb = ft_towrite(nb, '-');
+		nb = ft_towrite(nb);
 	while (count-- > 0)
 		write(1, "0", 1);
 	if (nb == 0 && flags.precision != 0 && count-- && pad--)
@@ -92,7 +92,7 @@ int		ft_putnbr_prec(long nb, struct s_flags flags)
 	pad -= (flags.minus == 0) ? ft_nbrlen(nb) : ft_nbrlen(nb) - 1;
 	if (nb < 0)
 	{
-		nb = ft_towrite(nb, '-');
+		nb = ft_towrite(nb);
 		ret++;
 	}
 	if (flags.minus == 1)
@@ -102,8 +102,11 @@ int		ft_putnbr_prec(long nb, struct s_flags flags)
 			write(1, " ", 1);
 		return (ret);
 	}
-	while (pad-- > 0 && ret++)
+	while (pad-- > 0)
+	{
 		write(1, "0", 1);
+		ret++;
+	}
 	ret += ft_putnbr(nb);
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 15:34:40 by mahoang           #+#    #+#             */
-/*   Updated: 2020/01/24 05:10:26 by mahoang          ###   ########.fr       */
+/*   Updated: 2020/01/27 04:04:16 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ int		ft_puthex_prec(unsigned int nb, struct s_flags flags, int maj)
 
 	ret = 0;
 	pad = (flags.dot == 1) ? flags.precision : flags.width;
-	pad -= (flags.minus == 0) ? ft_hexlen(nb) : ft_hexlen(nb) - 1;
-	if (flags.minus == 1)
+	pad -= (flags.minus == 0) ? ft_hexlen(nb) : ft_hexlen(nb);
+	if (nb < 0)
 	{
 		write(1, "-", 1);
 		nb = -nb;

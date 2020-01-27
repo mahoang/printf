@@ -6,7 +6,7 @@
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 05:06:46 by mahoang           #+#    #+#             */
-/*   Updated: 2020/01/24 05:21:56 by mahoang          ###   ########.fr       */
+/*   Updated: 2020/01/27 05:51:40 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int		ft_string_flags(char *c, struct s_flags flags)
 		else if (flags.dot == 1)
 			return (ft_putstr_prec("(null)", flags.precision));
 		else
-			return (ft_putstr("(null)"));
+			return (ft_putstr1("(null)"));
 	}
 	else
 	{
@@ -62,7 +62,7 @@ int		ft_string_flags(char *c, struct s_flags flags)
 		else if (flags.dot == 1)
 			return (ft_putstr_prec(c, flags.precision));
 		else
-			return (ft_putstr(c));
+			return (ft_putstr1(c));
 	}
 }
 
@@ -101,31 +101,4 @@ int		ft_number_flags(long nb, struct s_flags flags)
 		return (ft_putnbr_prec(nb, flags));
 	else
 		return (ft_putnbr(nb));
-}
-
-int		ft_nbr_0(long nb, struct s_flags flags)
-{
-	int c;
-
-	c = 0;
-	c = (flags.precision > flags.width) ? flags.precision : flags.width;
-	if (flags.minus == 0 && c == flags.precision)
-	{
-		while (c-- > flags.width)
-			write(1, "0", 1);
-		while (c-- >= 0)
-			write(1, " ", 1);
-	}
-	if (flags.minus == 0 && c == flags.width)
-	{
-		while (c-- > flags.precision)
-			write(1, " ", 1);
-		while (c-- >= 0)
-			write(1, "0", 1);
-	}
-	if (flags.minus == 1)
-		return (ft_putnbr_width_prec(nb, flags));
-	if (flags.width > flags.precision)
-		return (flags.width);
-	return (flags.precision);
 }
