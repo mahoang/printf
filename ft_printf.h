@@ -6,7 +6,7 @@
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 18:22:19 by mahoang           #+#    #+#             */
-/*   Updated: 2020/01/27 05:49:39 by mahoang          ###   ########.fr       */
+/*   Updated: 2020/01/31 18:01:08 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ int				ft_putchar(char c);
 int				ft_strlen(char *c);
 int				ft_string_flags(char *c, struct s_flags flags);
 int				ft_putstr1(char *c);
-int				ft_nbr_0(long nb, struct s_flags flags);
 int				ft_putstr_width_dot(char *c, struct s_flags flags);
 int				ft_putstr_width(char *c, struct s_flags flags);
 int				ft_putstr_prec(char *c, int prec);
@@ -67,9 +66,11 @@ long			ft_towrite(long nb);
 int				ft_putnbr_width(long nb, struct s_flags flags);
 int				ft_putnbr_prec(long nb, struct s_flags flags);
 int				ft_putnbr_width_prec(long nb, struct s_flags flags);
-int				ft_nbr_0(long nb, struct s_flags flags);
+int				ft_nbr_0(struct s_flags flags);
 void			ft_nbr_1(struct s_flags flags, int c);
 void			ft_nbr_2(struct s_flags flags, int c);
+void			ft_nbr_3(struct s_flags flags, int c);
+void			ft_nbr_4(struct s_flags flags, int c);
 /*
 **	pnt
 */

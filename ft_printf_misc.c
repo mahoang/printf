@@ -6,7 +6,7 @@
 /*   By: mahoang <mahoang@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/24 05:06:46 by mahoang           #+#    #+#             */
-/*   Updated: 2020/01/27 05:51:40 by mahoang          ###   ########.fr       */
+/*   Updated: 2020/01/31 17:59:48 by mahoang          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int		ft_hexa_flags(unsigned int nb, struct s_flags flags, int maj)
 int		ft_number_flags(long nb, struct s_flags flags)
 {
 	if (flags.dot == 1 && flags.precision >= 0 && nb == 0)
-		return (ft_nbr_0(nb, flags));
+		return (ft_nbr_0(flags));
 	if (flags.width >= 0 && flags.dot == 1)
 		return (ft_putnbr_width_prec(nb, flags));
 	else if (flags.width > 0 && flags.zero == 0)
